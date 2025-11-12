@@ -26,7 +26,7 @@ let lastIndex = -1;
 let currentLineDiv = null;
 let currentEmoji = null;
 
-// klik tombol hati → mulai audio
+// Klik tombol hati → mulai audio
 playButton.addEventListener('click', () => {
   audio.play().then(() => {
     playButton.style.display = 'none';
@@ -36,22 +36,19 @@ playButton.addEventListener('click', () => {
   });
 });
 
-// fungsi buat menampilkan lirik dan emoji
+// Fungsi menampilkan lirik + emoji
 function showLine(text, emo, index) {
-  // hapus lirik sebelumnya
   if (currentLineDiv) {
     currentLineDiv.classList.remove('show');
     if (currentEmoji) currentEmoji.remove();
   }
 
-  // buat lirik baru
   const lineDiv = document.createElement('div');
   lineDiv.className = 'line show';
   lineDiv.textContent = text;
   lyricsContainer.appendChild(lineDiv);
   currentLineDiv = lineDiv;
 
-  // emoji pop-up
   if (emo) {
     const emojiDiv = document.createElement('div');
     emojiDiv.className = 'emoji';
@@ -61,25 +58,20 @@ function showLine(text, emo, index) {
     lineDiv.appendChild(emojiDiv);
     currentEmoji = emojiDiv;
 
-    setTimeout(() => {
-      if (emojiDiv) emojiDiv.remove();
-    }, 1500);
+    setTimeout(() => emojiDiv.remove(), 1500);
   }
 }
 
-// update lirik sesuai waktu audio
+// Update lirik sesuai waktu audio
 audio.addEventListener('timeupdate', () => {
   const currentTime = audio.currentTime;
-
-  // cek semua lirik
   for (let i = 0; i < lyrics.length; i++) {
     const [time, text, emo] = lyrics[i];
-
-    // tampilkan jika waktu audio >= timestamp lirik dan belum tampil
     if (currentTime >= time && lastIndex < i) {
       lastIndex = i;
       showLine(text, emo, i);
-      break; // hanya satu lirik muncul setiap update
+      break;
     }
   }
 });
+
