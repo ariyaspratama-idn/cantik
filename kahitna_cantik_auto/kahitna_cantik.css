@@ -1,0 +1,99 @@
+/* Reset dan body */
+body {
+  background: #000;
+  color: pink;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  padding: 40px;
+  overflow: hidden;
+}
+
+h2 {
+  color: #ffb6c1;
+  text-shadow: 0 0 15px #ff69b4;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+}
+
+#audio {
+  display: none; /* sembunyikan audio */
+}
+
+/* Tombol play dengan icon hati */
+#playButton {
+  font-size: 3rem;
+  cursor: pointer;
+  margin: 20px 0;
+  transition: transform 0.2s;
+  animation: heartbeat 1.2s infinite alternate;
+}
+
+/* Heartbeat animation untuk tombol sebelum di klik */
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+#playButton:hover {
+  transform: scale(1.4);
+}
+
+/* Lirik container */
+#lyrics {
+  font-size: 1.6rem;
+  line-height: 2;
+  margin-top: 30px;
+  height: 300px;
+  overflow: hidden; /* scroll bar disembunyikan */
+  position: relative;
+}
+
+/* Lirik baris */
+.line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  opacity: 0;
+  transition: all 0.6s ease;
+  color: #ff99cc;
+  text-shadow: 0 0 15px #ff66b2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Lirik muncul */
+.line.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Emoji pop-up */
+.emoji {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0;
+  animation: popUp 1.5s ease-out;
+}
+
+@keyframes popUp {
+  0% { opacity: 0; transform: scale(0.3) translateY(10px); }
+  40% { opacity: 1; transform: scale(1.1) translateY(-10px); }
+  100% { opacity: 0; transform: scale(1.4) translateY(-30px); }
+}
+
+/* Optional: responsive font */
+@media (max-width: 500px) {
+  #lyrics {
+    font-size: 1.2rem;
+    height: 200px;
+  }
+  #playButton {
+    font-size: 2.5rem;
+  }
+}
