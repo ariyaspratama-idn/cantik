@@ -31,7 +31,6 @@ h2 {
   animation: heartbeat 1.2s infinite alternate;
 }
 
-/* Heartbeat animation untuk tombol sebelum di klik */
 @keyframes heartbeat {
   0% { transform: scale(1); }
   50% { transform: scale(1.2); }
@@ -48,7 +47,7 @@ h2 {
   line-height: 2;
   margin-top: 30px;
   height: 300px;
-  overflow: hidden; /* scroll bar disembunyikan */
+  overflow: hidden;
   position: relative;
 }
 
@@ -87,13 +86,9 @@ h2 {
   100% { opacity: 0; transform: scale(1.4) translateY(-30px); }
 }
 
-/* Optional: responsive font */
+/* Responsif */
 @media (max-width: 500px) {
-  #lyrics {
-    font-size: 1.2rem;
-    height: 200px;
-  }
-  #playButton {
-    font-size: 2.5rem;
-  }
+  #lyrics { font-size: 1.2rem; height: 200px; }
+  #playButton { font-size: 2.5rem; }
 }
+
